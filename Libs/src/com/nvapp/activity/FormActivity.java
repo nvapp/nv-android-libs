@@ -23,6 +23,8 @@ public abstract class FormActivity extends BaseActivity {
 				FormActivity.this.onReceiveResult(resultCode, resultData);
 			}
 		};
+
+		System.out.println("FormActivity...");
 	}
 
 	protected void onReceiveResult(int resultCode, Bundle resultData) {

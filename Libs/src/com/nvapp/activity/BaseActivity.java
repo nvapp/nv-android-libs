@@ -20,6 +20,8 @@ public class BaseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		handler = new BaseHandler(this);
+		
+		System.out.println("BaseActivity...");
 	}
 
 	private static class BaseHandler extends Handler {
