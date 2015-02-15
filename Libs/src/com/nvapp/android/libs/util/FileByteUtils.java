@@ -54,4 +54,40 @@ public class FileByteUtils {
 			throw e;
 		}
 	}
+
+	private void copy(InputStream reader, OutputStream writer) throws IOException {
+		byte byteArray[] = new byte[4092];
+		while (true) {
+			int numOfBytesRead = reader.read(byteArray, 0, 4092);
+			if (numOfBytesRead == -1) {
+				break;
+			}
+			// else
+			writer.write(byteArray, 0, numOfBytesRead);
+		}
+		return;
+	}
+
+	private String readStreamAsString(InputStream is) throws FileNotFoundException, IOException {
+		ByteArrayOutputStream baos = null;
+		try {
+			baos = new ByteArrayOutputStream();
+			copy(is, baos);
+			return baos.toString();
+		} finally {
+			if (baos != null)
+				closeStreamSilently(baos);
+		}
+	}
+
+	private void closeStreamSilently(OutputStream os) {
+		if (os == null)
+			return;
+		// os is not null
+		try {
+			os.close();
+		} catch (IOException x) {
+			throw new RuntimeException("This shouldn't happen. exception closing a file", x);
+		}
+	}
 }
