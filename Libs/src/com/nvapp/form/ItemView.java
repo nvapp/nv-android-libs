@@ -26,6 +26,7 @@ public abstract class ItemView extends LinearLayout {
 		this.addView(labelView);
 
 		this.addView(this.createElement(context, null));
+		this.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 	}
 
 	public void parse(JSONObject config) {
