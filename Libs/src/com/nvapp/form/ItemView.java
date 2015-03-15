@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public abstract class ItemView extends LinearLayout {
 	private TextView labelView;
-	private View component;
 	private String field;
 	private int group;
 
@@ -26,8 +25,7 @@ public abstract class ItemView extends LinearLayout {
 		this.labelView = this.createLabel(context, null);
 		this.addView(labelView);
 
-		this.component = this.createElement(null);
-		this.addView(component);
+		this.addView(this.createElement(context, null));
 	}
 
 	public void parse(JSONObject config) {
@@ -49,11 +47,11 @@ public abstract class ItemView extends LinearLayout {
 		return labelView;
 	}
 
-	public abstract View createElement(Form form);
+	public abstract View createElement(Context contex, Form form);
 
 	public abstract String getValue();
 
-	public abstract void setValue();
+	public abstract void setValue(CharSequence value);
 
 	public abstract Map<String, String> getKeyValue();
 
