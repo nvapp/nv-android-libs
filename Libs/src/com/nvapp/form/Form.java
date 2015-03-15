@@ -1,5 +1,8 @@
 package com.nvapp.form;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,6 +13,8 @@ public class Form extends LinearLayout {
 	private int tenantId;
 	private LabelLocation LabelLocation;
 	private int labelWidth;
+
+	private Map<String, ItemView> views = new HashMap<String, ItemView>();
 
 	public Form(Context context) {
 		super(context);
@@ -54,5 +59,13 @@ public class Form extends LinearLayout {
 
 	public void setLabelWidth(int labelWidth) {
 		this.labelWidth = labelWidth;
+	}
+
+	public void addView(String id, ItemView itemView) {
+		this.views.put(id, itemView);
+	}
+
+	public ItemView getView(String id) {
+		return this.views.get(id);
 	}
 }
