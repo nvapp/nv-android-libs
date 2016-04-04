@@ -1,5 +1,7 @@
 <resources>
 
     <string name="app_name">Libs</string>
+    <string name="empty_img">无图片</string>
+    <string name="message_99_plus">99+</string>
 
 </resources>
